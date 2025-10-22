@@ -1,0 +1,40 @@
+@page
+@model ClubLedger.Pages.Accounts.IndexModel
+
+<div class="container p-3">
+    <div class="row pt-4"></div>
+        <div class="col-6">
+            <h2 class="text-primary">Account List</h2>
+        </div>
+        <div class="col-6">
+
+        </div>
+</div>
+
+<br /><br />
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Account Code
+            </th>
+            <th>
+                Account Name
+            </th>
+            <th>
+                Account Type ID
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model.Accounts)
+        {
+            <tr>
+                <td width="40%">@obj.AccountCode</td>
+                <td width="40%">@obj.AccountName</td>
+                <td width="40%">@obj.AccountTypeID</td>
+            </tr>
+        }
+    </tbody>
+</table>
