@@ -6,18 +6,18 @@ using ClubLedger.Models;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 
-namespace ClubLedger.Pages.Accounts;
+namespace ClubLedger.Pages.ContactTypes;
 
 public class IndexModel : PageModel
 {
     private readonly AppDbContext _db;
-    public IEnumerable<Account> Accounts { get; set; } = new List<Account>();
+    public IEnumerable<ContactType> ContactTypes { get; set; } = new List<ContactType>();
     public IndexModel(AppDbContext db)
     {
         _db = db;
     }
     public void OnGet()
     {
-        Accounts = _db.Account;
+        ContactTypes = _db.ContactType;
     }
 }

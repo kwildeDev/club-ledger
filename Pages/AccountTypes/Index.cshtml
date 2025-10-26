@@ -1,13 +1,13 @@
 @page
-@model ClubLedger.Pages.Accounts.IndexModel
+@model ClubLedger.Pages.AccountTypes.IndexModel
 @{
-    ViewData["Title"] = "Accounts";
+    ViewData["Title"] = "Account Types";
 }
 
 <div class="container p-3">
     <div class="row pt-4"></div>
     <div class="col-6">
-        <h2 class="text-primary">Account List</h2>
+        <h2 class="text-primary">Account Types List</h2>
     </div>
     <div class="col-6">
 
@@ -22,10 +22,10 @@
     <thead>
         <tr>
             <th>
-                Account Code
+                Account Type Name
             </th>
             <th>
-                Account Name
+                Normal Balance
             </th>
             <th>
                 Account Type ID
@@ -33,21 +33,21 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var obj in Model.Accounts)
+        @foreach (var obj in Model.AccountTypes)
         {
             <tr>
                 <td width="30%">
-                    @Html.DisplayFor(modelItem => obj.AccountCode)
+                    @Html.DisplayFor(modelItem => obj.AccountTypeName)
                 </td>
                 <td width="30%">
-                    @Html.DisplayFor(modelItem => obj.AccountName)
+                    @Html.DisplayFor(modelItem => obj.NormalBalance)
                 </td>
                 <td width="30%">
                     @Html.DisplayFor(modelItem => obj.AccountTypeID)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@obj.AccountID">Edit</a> |
-                    <a asp-page="./Delete" asp-route-id="@obj.AccountID">Delete</a>
+                    <a asp-page="./Edit" asp-route-id="@obj.AccountTypeID">Edit</a> |
+                    <a asp-page="./Delete" asp-route-id="@obj.AccountTypeID">Delete</a>
                 </td>
             </tr>
         }

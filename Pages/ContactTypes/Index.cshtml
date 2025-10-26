@@ -1,0 +1,49 @@
+@page
+@model ClubLedger.Pages.ContactTypes.IndexModel
+@{
+    ViewData["Title"] = "Contact Types";
+}
+
+<div class="container p-3">
+    <div class="row pt-4"></div>
+    <div class="col-6">
+        <h2 class="text-primary">Contact Types List</h2>
+    </div>
+    <div class="col-6">
+
+    </div>
+</div>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<br /><br />
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Contact Type Name
+            </th>
+            <th>
+                Contact Type ID
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model.ContactTypes)
+        {
+            <tr>
+                <td width="40%">
+                    @Html.DisplayFor(modelItem => obj.ContactTypeName)
+                </td>
+                <td width="40%">
+                    @Html.DisplayFor(modelItem => obj.ContactTypeID)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@obj.ContactTypeID">Edit</a> |
+                    <a asp-page="./Delete" asp-route-id="@obj.ContactTypeID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
