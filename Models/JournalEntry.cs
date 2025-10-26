@@ -7,7 +7,7 @@ namespace ClubLedger.Models
         [Key]
         public int EntryID { get; set; }
         [Required]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         public DateTime EntryDate { get; set; }
         public string? Description { get; set; } = string.Empty;
         public string? ReferenceNum { get; set; } = string.Empty;

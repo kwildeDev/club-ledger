@@ -1,42 +1,67 @@
 @page
 @model ClubLedger.Pages.JournalEntries.CreateModel
+@using ClubLedger.ViewModels
 
-        @{
-        ViewData["Title"] = "Create";
-        }
-        
-        <h1>Create</h1>
-        
-    <h4>Contact</h4>
-    <hr />
-    <div class="row">
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Journal Entry</h4>
+<hr />
+<div class="row">
     <div class="col-md-4">
-    <form method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
-                <label asp-for="JournalEntry.EntryDate" class="control-label"></label>
-                <input asp-for="JournalEntry.EntryDate" class="form-control" />
-                <span asp-validation-for="JournalEntry.EntryDate" class="text-danger"></span>
+                <label asp-for="Input.EntryDate"></label>
+                <input asp-for="Input.EntryDate" class="form-control" />
+                <span asp-validation-for="Input.EntryDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="JournalEntry.Description" class="control-label"></label>
-                <input asp-for="JournalEntry.Description" class="form-control" />
-                <span asp-validation-for="JournalEntry.Description" class="text-danger"></span>
+                <label asp-for="Input.Description"></label>
+                <input asp-for="Input.Description" class="form-control" />
+                <span asp-validation-for="Input.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="JournalEntry.ContactID" class="control-label"></label>
-                <input asp-for="JournalEntry.ContactID" class="form-control" />
-                <span asp-validation-for="JournalEntry.ContactID" class="text-danger"></span>
+                <label asp-for="Input.ContactID"></label>
+                <select asp-for="Input.ContactID" asp-items="@Model.Input.ContactOptions" 
+                    class="form-control">
+                    <option value="">-- Select Contact --</option>
+                </select>
+                <span asp-validation-for="Input.ContactID" class="text-danger"></span>
             </div>
+
+            <hr />
             <div class="form-group">
-                <label asp-for="JournalEntry.ReferenceNum" class="control-label"></label>
-                <input asp-for="JournalEntry.ReferenceNum" class="form-control" />
-                <span asp-validation-for="JournalEntry.ReferenceNum" class="text-danger"></span>
+                <label asp-for="Input.OtherAccountID"></label>
+                <select asp-for="Input.OtherAccountID" asp-items="@Model.Input.OtherAccountOptions"
+                    class="form-control">
+                    <option value="">-- Select Account --</option>
+                </select>
+                <span asp-validation-for="Input.OtherAccountID" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="Input.Method"></label>
+                <select asp-for="Input.Method" asp-items="Html.GetEnumSelectList<JournalEntryViewModel.PaymentMethod>()"
+                    class="form-control"></select>
+                <span asp-validation-for="Input.Method" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="Input.TransactionAmount"></label>
+                <input asp-for="Input.TransactionAmount" class="form-control" />
+                <span asp-validation-for="Input.TransactionAmount" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create Journal Entry</button>
         </form>
+
+
+
     </div>
 </div>
 
@@ -45,5 +70,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
